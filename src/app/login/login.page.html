@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-input required type="text" placeholder="Username"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input required type="password" placeholder="Password"></ion-input>
+  </ion-item>
+  <ion-col><ion-button shape="round" color="secondary" expand="block" fill="outline" (click)="login()">Log In</ion-button></ion-col>
+  <ion-col><ion-button shape="round" color="warning" expand="block" fill="outline" (click)="checkSession()">Log In</ion-button></ion-col>
+</ion-content>
