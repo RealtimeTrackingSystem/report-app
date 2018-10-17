@@ -20,7 +20,5 @@ export class RootLoaderComponent {
       icon: 'list'
     }
   ];
-  constructor(
-    private sessionService: SessionService
-  ) { }
+  constructor() { }
 }

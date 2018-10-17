@@ -1,3 +1,4 @@
+import { IUserNew } from './../interfaces/user/user-new.interface';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { from, Observable } from 'rxjs';
@@ -37,6 +38,14 @@ export class SessionService {
     const headers = new HttpHeaders()
       .append('Content-Type', 'application/json');
     return this.http.post(this.sessionURL + '/signin', { loginName, password }, {
+      headers: headers
+    });
+  }
+
+  signup (newUser: IUserNew): Observable<any> {
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+    return this.http.post(this.sessionURL + '/signup', newUser, {
       headers: headers
     });
   }
