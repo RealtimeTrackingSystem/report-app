@@ -5,15 +5,16 @@ import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IAppStore } from '../store/app.state';
-import { LoginAction } from '../store/state/session.state';
+import { SignupAction } from '../store/state/session.state';
 import { Subscription } from 'rxjs';
 
+
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-signup',
+  templateUrl: './signup.page.html',
+  styleUrls: ['./signup.page.scss'],
 })
-export class LoginPage implements OnInit, OnDestroy {
+export class SignupPage implements OnInit, OnDestroy {
   private sessionSubscription: Subscription;
   constructor(
     private sessionService: SessionService,
@@ -27,39 +28,40 @@ export class LoginPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sessionSubscription = this.store.select('session')
-          .subscribe(
-            userState => {
-              if (userState.session) {
-                this.router.navigate(['/home']);
-              } else if (userState.error) {
-                this.loadSimpleToast(userState.error);
-              }
-            }
-          );
+      .subscribe(
+        userState => {
+          if (userState.session) {
+            this.router.navigate(['/home']);
+          } else if (userState.error) {
+            this.loadSimpleToast(userState.error);
+          }
+        }
+      );
   }
 
   ngOnDestroy() {
     this.sessionSubscription.unsubscribe();
   }
 
-  login ({loginName, password}) {
-    this.store.dispatch(new LoginAction(loginName, password));
+  goToLogin () {
+    this.router.navigate(['/login']);
   }
 
-  formError({ message }) {
-    this.loadSimpleToast(message);
+  signup(newUser) {
+    this.store.dispatch(new SignupAction(newUser));
   }
 
-  goToSignup () {
-    this.router.navigate(['/signup']);
+  signupError(event) {
+    this.loadSimpleToast(event.message);
   }
 
   async loadSimpleToast (message) {
     const toast = await this.toastCtrl.create({
       message: message,
-      duration: 15000,
+      duration: 1000,
       position: 'top'
     });
     toast.present();
   }
+
 }

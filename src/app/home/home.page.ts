@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,12 @@ import { MenuController } from '@ionic/angular';
 })
 export class HomePage {
   constructor (
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private router: Router
   ) {
     this.menuCtrl.enable(true);
+  }
+  logout () {
+    this.router.navigate(['/login']);
   }
 }

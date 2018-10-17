@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <app-signup-form
+    (signupAction)="signup($event)"
+    (errorAction)="signupError($event)"
+  ></app-signup-form>
+  <ion-col><ion-button shape="round" color="warning" expand="block" fill="outline" (click)="goToLogin()">Log In?</ion-button></ion-col>
+</ion-content>

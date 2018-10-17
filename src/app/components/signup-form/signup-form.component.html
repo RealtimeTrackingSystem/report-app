@@ -1,0 +1,75 @@
+<form [formGroup]="signupForm">
+  <ion-item>
+  <ion-label>Username: </ion-label>
+    <ion-input formControlName="username" required type="text" placeholder="Enter your username.."></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Email: </ion-label>
+    <ion-input formControlName="email" required type="email" placeholder="johndoe@domain.com"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>First Name: </ion-label>
+    <ion-input formControlName="fname" required type="text" placeholder="John"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Last Name: </ion-label>
+    <ion-input formControlName="lname" required type="text" placeholder="Doe"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Gender: </ion-label>
+    <ion-select formControlName="gender" placeholder="Select One">
+      <ion-select-option value="F">Female</ion-select-option>
+      <ion-select-option value="M">Male</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Nickname: </ion-label>
+    <ion-input formControlName="alias" required type="text" placeholder="Your Nickname or Alias"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Street: </ion-label>
+    <ion-input formControlName="street" required type="text" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Barangay: </ion-label>
+    <ion-input formControlName="barangay" required type="text" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>City: </ion-label>
+    <ion-input formControlName="city" required type="text" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Region: </ion-label>
+    <ion-input formControlName="region" required type="text" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Country: </ion-label>
+    <ion-input formControlName="country" required type="text" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Zip Code: </ion-label>
+    <ion-input formControlName="zip" required type="text" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Password: </ion-label>
+    <ion-input formControlName="password" required type="password" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Re-type Password: </ion-label>
+    <ion-input formControlName="passwordConfirmation" required type="password" placeholder=""></ion-input>
+  </ion-item>
+  <ion-col><ion-button shape="round" color="secondary" expand="block" fill="outline" (click)="signup()">Sign Up</ion-button></ion-col>
+</form>
