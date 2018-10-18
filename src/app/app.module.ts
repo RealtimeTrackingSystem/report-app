@@ -16,7 +16,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import {StoreModule} from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AppInitialState, IAppStore, rootReducer } from './store/app.state';
-import { SessionEffects } from './store/effects';
+import { SessionEffects, HostEffects } from './store/effects';
 
 @NgModule({
   declarations: [AppComponent, RootLoaderComponent],
@@ -27,7 +27,7 @@ import { SessionEffects } from './store/effects';
     AppRoutingModule,
     IonicStorageModule.forRoot(),
     StoreModule.forRoot(<any>rootReducer),
-    EffectsModule.forRoot([SessionEffects])
+    EffectsModule.forRoot([SessionEffects, HostEffects])
   ],
   providers: [
     StatusBar,

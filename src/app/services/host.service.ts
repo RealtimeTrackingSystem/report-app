@@ -15,7 +15,7 @@ export class HostService {
   constructor(
     private sessionService: SessionService,
     private http: HttpClient
-  ) { }
+  ) {}
 
   getHosts (page: number = 0, limit: number = 10, filter = null): Observable<any> {
     let query = '?limit=' + limit + '&page=' + page;

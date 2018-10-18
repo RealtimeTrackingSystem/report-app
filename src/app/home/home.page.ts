@@ -1,6 +1,9 @@
+import { IAppStore } from './../store/app.state';
+import { Store } from '@ngrx/store';
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { LogoutAction } from '../store/state/session.state';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +13,17 @@ import { Router } from '@angular/router';
 export class HomePage {
   constructor (
     private menuCtrl: MenuController,
-    private router: Router
+    private router: Router,
+    private store: Store<IAppStore>,
   ) {
     this.menuCtrl.enable(true);
   }
   logout () {
-    this.router.navigate(['/login']);
+    return new Promise((resolve: any) => {
+      resolve(this.store.dispatch(new LogoutAction()));
+    })
+    .then(() => {
+      this.router.navigate(['/login']);
+    });
   }
 }
