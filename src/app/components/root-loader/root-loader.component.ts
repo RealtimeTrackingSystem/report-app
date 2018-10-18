@@ -15,8 +15,8 @@ export class RootLoaderComponent {
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
+      title: 'Host List',
+      url: '/host-list',
       icon: 'list'
     }
   ];

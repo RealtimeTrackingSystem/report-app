@@ -22,6 +22,7 @@ export class SessionService {
   get getSession (): Observable<ISession> {
     return from(this.storage.get('session'))
             .pipe(
+              // tap(console.log),
               map((result: string) => JSON.parse(result))
             );
   }
@@ -30,7 +31,7 @@ export class SessionService {
     return from(this.storage.set('session', JSON.stringify(session)))
             .pipe(
               map((result: string) => JSON.parse(result)),
-              tap(result => this.session = result)
+              tap((result: ISession) => this.session = result)
             );
   }
 
@@ -48,6 +49,10 @@ export class SessionService {
     return this.http.post(this.sessionURL + '/signup', newUser, {
       headers: headers
     });
+  }
+
+  logout (): Observable<any> {
+    return from(this.storage.clear());
   }
 
 }

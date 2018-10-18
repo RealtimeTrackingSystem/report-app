@@ -21,8 +21,9 @@ export const SessionActionTypes = {
   LOGIN_ERROR: 'LOGIN_ERROR',
   LOGIN_CHECK: 'LOGIN_CHECK',
   LOGIN_CHECK_ERROR: 'LOGIN_CHECK_ERROR',
-  LOGIN_DESTROY: 'LOGIN_DESTROY',
-  LOGIN_DESTROY_ERROR: 'LOGIN_DESTROY_ERROR',
+  LOGOUT: 'LOGOUT',
+  LOGOUT_SUCCESS: 'LOGOUT_SUCCESS',
+  LOGOUT_ERROR: 'LOGOUT_ERROR',
   SIGNUP: 'SIGNUP',
   SIGNUP_SUCCESS: 'SIGNUP_SUCCESS',
   SIGNUP_ERROR: 'SIGNUP_ERROR'
@@ -47,15 +48,23 @@ export class SignupAction implements Action {
   ) {}
 }
 
-export function sessionReducer (state: ISessionStore = sessionInitialState, action: LoginAction) {
+export class LogoutAction implements Action {
+  type = SessionActionTypes.LOGOUT;
+  session: ISession;
+
+  constructor () {}
+
+}
+
+export function sessionReducer (state: ISessionStore = sessionInitialState, action) {
   switch (action.type) {
     case SessionActionTypes.LOGIN: return sessionReducers.login(state, action);
     case SessionActionTypes.LOGIN_SUCCESS: return sessionReducers.loginSuccess(state, action);
     case SessionActionTypes.LOGIN_ERROR: return sessionReducers.loginError(state, action);
     case SessionActionTypes.LOGIN_CHECK: return sessionReducers.loginCheck(state, action);
     case SessionActionTypes.LOGIN_CHECK_ERROR: return sessionReducers.loginCheckError(state, action);
-    case SessionActionTypes.LOGIN_DESTROY: return sessionReducers.loginDestroy(state);
-    case SessionActionTypes.LOGIN_DESTROY_ERROR: return sessionReducers.loginDestroyError(state);
+    case SessionActionTypes.LOGOUT_SUCCESS: return sessionReducers.loginDestroy(state);
+    case SessionActionTypes.LOGOUT_ERROR: return sessionReducers.loginDestroyError(state);
     case SessionActionTypes.SIGNUP: return sessionReducers.signup(state, action);
     case SessionActionTypes.SIGNUP_SUCCESS: return sessionReducers.signupSuccess(state, action);
     case SessionActionTypes.SIGNUP_ERROR: return sessionReducers.signupError(state, action);

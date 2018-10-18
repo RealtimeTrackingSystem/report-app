@@ -1,3 +1,4 @@
+import { SessionGuard } from './../guards/session.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -14,7 +15,8 @@ import { ListPage } from './list.page';
     RouterModule.forChild([
       {
         path: '',
-        component: ListPage
+        component: ListPage,
+        canActivate: [SessionGuard]
       }
     ])
   ],
