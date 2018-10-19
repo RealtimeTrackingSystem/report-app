@@ -30,6 +30,7 @@ export class LoginPage implements OnInit, OnDestroy {
           .subscribe(
             userState => {
               if (userState.session) {
+                console.log(userState);
                 this.router.navigate(['/home']);
               } else if (userState.error) {
                 this.loadSimpleToast(userState.error);

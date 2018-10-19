@@ -53,3 +53,31 @@ export function getHostDetailError (state: IHostStore, action) {
     error: action.payload.error
   });
 }
+
+export function getMoreHost (state: IHostStore) {
+  return tassign<IHostStore, IHostStore>(state, {
+    ...state,
+    loading: true,
+    error: null
+  });
+}
+
+export function getMoreHostSuccess (state: IHostStore, action) {
+  return tassign<IHostStore, IHostStore>(state, {
+    ...state,
+    loading: false,
+    error: null,
+    hosts: state.hosts.concat(action.payload.hosts),
+    limit: action.payload.limit,
+    page: action.payload.page,
+    count: action.payload.count
+  });
+}
+
+export function getMoreHostError (state: IHostStore, action) {
+  return tassign<IHostStore, IHostStore>(state, {
+    ...state,
+    loading: false,
+    error: action.payload.error
+  });
+}

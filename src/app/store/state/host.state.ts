@@ -39,6 +39,13 @@ export class HostListAction implements Action {
     public filter = null) {}
 }
 
+export class HostDetailAction implements Action {
+  type = HostActionTypes.HOST_DETAILS;
+  constructor (
+    public hostId: string
+  ) {}
+}
+
 export function hostReducer (state: IHostStore = hostInitialState, action) {
   switch (action.type) {
     case HostActionTypes.HOST_LIST: return hr.getHosts(state);

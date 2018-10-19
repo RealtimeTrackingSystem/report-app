@@ -10,5 +10,18 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item *ngFor="let host of (hostLists$ | async)" (click)=hostDetailPage(host._id)>
+      <ion-icon name="home" slot="start"></ion-icon>
+      {{host.name}}
+      <div class="item-note" slot="end">
+        ({{host.location}})
+      </div>
+    </ion-item>
+  </ion-list>
+  <!--
+    <div *ngIf="selectedItem" padding>
+      You navigated here from <b>{{selectedItem.title }}</b>
+    </div>
+  -->
 </ion-content>

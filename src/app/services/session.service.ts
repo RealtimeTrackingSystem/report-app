@@ -22,7 +22,6 @@ export class SessionService {
   get getSession (): Observable<ISession> {
     return from(this.storage.get('session'))
             .pipe(
-              // tap(console.log),
               map((result: string) => JSON.parse(result))
             );
   }
