@@ -31,6 +31,14 @@ export function loginError (state: ISessionStore, action) {
 export function loginCheck (state: ISessionStore, action) {
   return tassign<ISessionStore, ISessionStore>(state, {
     ...state,
+    loading: true,
+    error: null
+  });
+}
+
+export function loginCheckSuccess (state: ISessionStore, action) {
+  return tassign<ISessionStore, ISessionStore>(state, {
+    ...state,
     loading: false,
     session: action.payload,
     error: null
